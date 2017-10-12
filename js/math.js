@@ -1,13 +1,25 @@
+/* Still missing the mean, median, etc. However the main issue is that I cannot put
+multiple numbers in, since it freezes the page (infinite loop somewhere I think).
+ */
+
+
+
+
 window.onload = prompt();
 
+//alert for initial page arrival.
 function prompt() {
     alert('Please input positive numbers into the box one at a time!');
 }
+
+//Designed to hold the numbers as they accumulate.
 var newSet= [];
 
+//Accumulates the numbers. I believe this is where it is hanging.
 function gather(){
     var incoming = document.getElementsByName("incomingtext")[0].value;
     int = parseInt(incoming);
+    //how to stop entering more numbers.
     if (int === -1){
         alert('goodbye!');
     }else{
@@ -15,6 +27,8 @@ function gather(){
         document.getElementById("output").innerHTML=calculate(newSet);
     }
 }
+
+//Determines if the number is prime.
 function isPrime(nums){
     primes = [];
     for(i=0;i<nums.length;i++) {
@@ -26,10 +40,14 @@ function isPrime(nums){
     }
     return primes;
 }
+
+//Should return the square of each number
 function squares(nums) {
 
     return nums*nums;
 }
+
+//Determines if the # is even or odd
 function evenOdd(nums){
     if ((nums % 2) == 0) {
             return true;
@@ -37,6 +55,8 @@ function evenOdd(nums){
             return false;
         }
 }
+
+//combining all the previous functions for final output.
 function calculate(nums) {
     primes = [];
     sqrs = [];
