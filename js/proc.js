@@ -1,29 +1,21 @@
 function countwords() {
     var wrdlst = document.getElementsByName("incomingtext")[0].value;
     var textsplit = wrdlst.split(' ');
-    for(i=0;i<textsplit.length;i++){
+    for (i = 0; i < textsplit.length; i++) {
         textsplit[i].toLowerCase();
     }
-
-    var numWords = 1;
-    var textfreq = [1];
-    //console.log(textfreq);
-    var processedText = [];
-    for (i=0;i<textsplit.length;i++) {
-        if (textsplit[i] === textsplit[i-1]){
-            textfreq[i] += 1;
-            //processedText[i]+=1;
-        }else{
-            textfreq.push(1);
-            processedText.push(textsplit[i]);
+    var counted = {};
+    for (i = 0; i < textsplit.length; i++) {
+        var wrd = textsplit[i];
+        if (!counted[wrd]) {
+            counted[wrd] = 1;
+        } else {
+            counted[wrd]++;
         }
-    }
-    console.log(processedText);
-    fin = [];
-    for(i=0; i<processedText;i++){
-        fin.push(processedText[i] + textfreq[i]);
-        console.log(fin);
-    }
 
-    //document.getElementById("output").innerHTML= fin;
+    }
+    JSON.stringify(console.log(counted));
+
+    document.getElementById("output").innerHTML = JSON.stringify(counted);
 }
+
